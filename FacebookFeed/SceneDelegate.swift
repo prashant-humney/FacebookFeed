@@ -20,7 +20,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     guard let windowScene = (scene as? UIWindowScene) else { return }
     window = UIWindow(windowScene: windowScene)
     window?.makeKeyAndVisible()
-    window?.rootViewController = UINavigationController(rootViewController: ViewController())
+    let navigationController = UINavigationController(rootViewController: FeedController())
+    
+    navigationController.navigationBar.barTintColor = UIColor(red: 51/255, green: 90/255, blue: 149/255, alpha: 1.0)
+    navigationController.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+    // this seems so weird. Setting it to black sets the bar style to white 🤣
+    //FYI: Use CMD + CTRL + SPACE to bring up emojis option.
+    navigationController.navigationBar.barStyle = .black
+      
+    window?.rootViewController = navigationController
+    
   }
 
   func sceneDidDisconnect(_ scene: UIScene) {
